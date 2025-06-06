@@ -1,0 +1,5 @@
+[ERROR] [device_name] Could not connect to database!
+{timestamp}
+Please reboot the physical device to restart the application when the database is up and running.
+If the problem persists, please check internet connection on the site.
+Packet loos and unstable internet can even prevent getting of this message in the future!

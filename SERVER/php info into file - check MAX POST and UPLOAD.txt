@@ -1,0 +1,6 @@
+ob_start();              // Start output buffering
+phpinfo();               // Generate phpinfo output
+$info = ob_get_contents(); // Get the output as a string
+ob_end_clean();          // Clean (erase) the output buffer
+
+file_put_contents("phpinfo.html", $info); // Save to file

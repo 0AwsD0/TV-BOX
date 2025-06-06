@@ -1,0 +1,110 @@
+<?php
+require("./login_check.php");
+require("./pdo.php");
+require_once("./log.php");
+
+if(!isset($_POST["channel"])){
+    header("Location: ./display.php?error=No_POST_data_detected");
+    exit();
+    logEvent("error", "[JSON CREATE] No POST data detected BY ".$_SESSION["email"]);
+}
+
+$sql = 'SELECT * FROM channels_config WHERE channel_name = :channel_name';
+$stmt = $pdo->prepare($sql);
+$stmt->execute(['channel_name' => $_POST['channel']]);
+$select = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+//Check if file w channel name exists
+
+$fileName = './cfg/'.$_POST["channel"].'.json';
+
+/*
+if (file_exists($fileName)) {
+    echo "The file $fileName exists";
+    //Delete file
+    unlink($fileName);
+    //Create blank one
+    $cfgFile = fopen("testfile.txt", "w");
+    fclose($cfgFile);
+} else {
+    echo "The file $fileName does not exist";
+    //Create file
+}*/
+
+//################################################## SECTION NOT NEEDED COZ NOW HANDLED IN DEVICES
+/*
+// SECTION JSON Generation
+$objects = '[';
+
+foreach($select as $k=>$v){
+    echo('<br><p>'.htmlentities($v["file_name"]).' | '.htmlentities($v["duration"]).'</p>');
+
+    $mediaType = explode(".",$v["file_name"]);
+   if($mediaType[1] == "mp4"){ // mp4 no dot
+        $type = "video";
+    }
+    else if($mediaType[1] == "jpg"){
+        $type = "image";
+    }
+    else{
+        header("Location: ./display.php?error=MEDIA_EXTENSION_NOT_SUPPORTED_OR_EMPTY");
+        exit();
+    }
+    //+explode to make k v ->type: image / video
+    $objects .= '{"type": "'.$type.'","name": "'.$v["file_name"].'", "timer": '.htmlentities($v["duration"]).'},';
+
+}
+
+//del last character from string to remove last ','
+$objects = rtrim($objects, ",");
+$objects .= ']';
+
+file_put_contents($fileName, $objects);
+// SECTION END JSON Generation
+
+
+
+// SECTION DEPLOY -> config to folder for devices to download
+
+//SQL to get all device names for this channel to create cfg files
+    $sql = 'SELECT name FROM devices WHERE channel = (SELECT id FROM channels WHERE name = :channel)';
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([':channel' => $_SESSION["channel"]]);
+    $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+if($data){
+    //LOOP for every device
+    foreach($data as $row){
+        echo("<br>");
+        echo($row["name"]);
+        echo("<br>");
+        $newFile = './cfg/'.$row["name"].'_config.json';
+        if (!copy($fileName, $newFile)) {
+            logEvent("error", "[JSON CREATE] FAILED_AT_CONFIG_FILE_COPY action request BT".$_SESSION["email"]);
+            header("Location: ./display.php?error=FAILED_AT_CONFIG_FILE_COPY");
+            exit();
+        }
+        logEvent("info", "[JSON CREATE] Config created FOR:".$newFile." BY ".$_SESSION["email"]);
+    }
+}
+// SECTION DEPLOY
+
+
+//################################################## SECTION NOT NEEDED COZ NOW HANDLED IN DEVICES
+*/
+
+//Update configuration_date in channels to let devices know that it got edited
+$cfgDate = date("Y-m-d H:i:s"); //get date now w format -> 2024-01-11 13:58:49 | Make sure the server and Device are using same timezone!
+$sql = $pdo->prepare("UPDATE channels SET configuration_date = :cfgDate WHERE name = :name");
+    $result = $sql->execute([
+        ':cfgDate' => $cfgDate,
+        ':name'    => $_SESSION["channel"]
+    ]);
+
+//TO DO? make transaction here?
+//to use and be ACID compliant ofc
+
+header("Location: ./display.php?error=CFG_FILES_GENERATED");
+exit();
+
+?>

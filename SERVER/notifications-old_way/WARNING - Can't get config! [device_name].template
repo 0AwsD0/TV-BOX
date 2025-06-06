@@ -1,0 +1,4 @@
+[WARNING] <device_name> Can't download configuration!
+{timestamp}
+Please check if it's present on the server.
+If a device is newly connected, this message should be expected if not configured/set beforehand (before deploy).

@@ -1,0 +1,5 @@
+Dodaj do dokumentacji:
+Rasspberry się auitomatrycznie włącza
+Ma wpisane w config autoamtyczne odpalanie programu
+F11 to exit full screen
+Podczs instlaacji pierwsej ustawić 1080p screen - zapamiętuje raspberrypi ustaiwenie p[o resecie dodaktowo można na telewizorze ustawic domyślnmą rozdziełke na 1080p

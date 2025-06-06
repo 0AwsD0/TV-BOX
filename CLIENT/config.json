@@ -1,0 +1,17 @@
+[
+  {
+    "type": "image",
+    "name": "1.jpg",
+    "timer": 5
+  },
+  {
+    "type": "image",
+    "name": "2.jpg",
+    "timer": 5
+  },
+  {
+    "type": "video",
+    "name": "1.mp4",
+    "timer": 30
+  }
+]

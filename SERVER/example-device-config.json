@@ -1,0 +1,52 @@
+[
+    {
+        "type": "video",
+        "name": "1.mp4",
+        "timer": 10
+    },
+    {
+        "type": "image",
+        "name": "1.jpg",
+        "timer": 3
+    },
+    {
+        "type": "video",
+        "name": "2.mp4",
+        "timer": 10
+    },
+    {
+        "type": "video",
+        "name": "3.mp4",
+        "timer": 10
+    },
+    {
+        "type": "image",
+        "name": "2.jpg",
+        "timer": 3
+    },
+    {
+        "type": "image",
+        "name": "3.jpg",
+        "timer": 3
+    },
+    {
+        "type": "video",
+        "name": "4.mp4",
+        "timer": 3
+    },
+    {
+        "type": "video",
+        "name": "5.mp4",
+        "timer": 3
+    },
+    {
+        "type": "image",
+        "name": "4.jpg",
+        "timer": 3
+    },
+    {
+        "type": "image",
+        "name": "5.jpg",
+        "timer": 3
+    }
+]
