@@ -51,7 +51,7 @@ require("login_check.php");
             <p class="info-col-p"> <form action="./user_email_change.php" method="post"> <button type="submit" style="color: white; background-color: rgba(0,0,0,0); border: 0; font-size: 60px;"><i class="fa-solid fa-at settings-ico"></i></button>  </form> </p>
         </div>
         <div class="col-lg-6 info-col">
-            <p>INTERFACE PALETE</p>
+            <p>INTERFACE PALETTE</p>
             <p class="info-col-p"> <a href="#"> <i class="fa-solid fa-dice-d20 settings-ico"></i> </a> </p>
         </div>
         <div class="col-lg-6 info-col">

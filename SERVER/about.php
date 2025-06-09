@@ -39,7 +39,7 @@ require("./login_check.php");
                         <p>One PHP file makes use of 'getID3' - <a href="https://github.com/JamesHeinrich/getID3" style="cursor: pointer;">https://github.com/JamesHeinrich/getID3</a></p>
                         <p>Frontend uses 'Bootstrap' - <a href="https://getbootstrap.com/" style="cursor: pointer;">https://getbootstrap.com/</a></p>
                         <p>Frontend uses 'Fontawesome' - <a href="https://fontawesome.com/" style="cursor: pointer;">https://fontawesome.com/</a></p>
-						<br>
+                        <br>
                         <p>The full documentation of the project can be found in /tv-box-doc/site</p>
                     </div>
                 </div>

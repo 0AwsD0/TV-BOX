@@ -24,7 +24,7 @@ if(isset($_POST["id"]) && isset($_POST["pwd"]) && isset($_POST["sender"]) && iss
     }
     elseif(strlen($_POST["pwd"]) < 10 && $_POST["sender"] == "admin"){
         logEvent("warning", "[PWD CHANGE] Pwd too short - admin.php BY: ".$_SESSION["email"]);
-        header("Location: ./admin.php?user=PASSWORD_CHANGE_FAILED");
+        header("Location: ./admin.php?user=PASSWORD_CHANGE_FAILED (TOO SHORT - MINIMUM 10 CHARACTERS)");
         exit();
     }
 
