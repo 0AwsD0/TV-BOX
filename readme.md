@@ -1,10 +1,10 @@
 # TV-BOX
 Display images and videos in full screen window, from local directory. Configure server to manage your displays remotely.
 
-## I the package
+## In the package
 CLIENT - Electron.JS based application for usage on whatever system you choose
 
-SERVER - PHP -> Requires any www server and database (built on apache and MariaDB)
+SERVER - PHP -> Requires any www server and database (built on Apache and MariaDB)
 
 Full documentation for system included in SERVER -> /tv-box-doc dir
 
@@ -38,9 +38,9 @@ Full documentation for system included in SERVER -> /tv-box-doc dir
         Insert shortcut to the application in the opened folder
 
 The instal directory for the app is:
-                C:\Users\AwsD\AppData\Local\Programs\tv-box_electron
+                C:\Users\{User}\AppData\Local\Programs\tv-box_electron
 The config/working directory for the app is:
-                C:\Users\AwsD\AppData\Roaming\TV-BOX-CLIENT
+                C:\Users\{User}\AppData\Roaming\TV-BOX-CLIENT
 
 ### Linux / Raspberry Pi
 - If you want to run program every time system starts (installed version)
@@ -83,7 +83,7 @@ Navigate into $HOME/.config/autostart and create '.desktop' file, within the fil
 Download node:
 [https://nodejs.org/en/download/](https://nodejs.org/en/download/)
 
-Unpack node go into its folder -> cd node
+Unpack Node, go into its folder -> cd node
 
         sudo cp -R bin/* /usr/local/bin/
         sudo cp -R include/* /usr/local/include/
