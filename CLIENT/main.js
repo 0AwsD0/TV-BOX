@@ -473,6 +473,7 @@ function downloadFileSync(url, destination) {
     } catch (error) {
         console.error(`downloadFileSync::Error downloading file ${destination}:`, error.message);
         downloadErrors = 1;
+        sendNotification('WARNING','DOWNLOAD ERROR / UNFINISHED','Device encountered error while downloading files from the server. File may be present in configuration, but deleted from the server. // Sent by: downloadFileSync() // Error msg: '+error.message);
         if (fs.existsSync(destination)) {
             fs.unlinkSync(destination);
         }
@@ -607,7 +608,8 @@ function cleanAndMove(sourceDir, destinationDir){
                     try{
                         fs.emptyDirSync(destinationDir);
                     }
-                    catch{
+                    catch(error){
+                        sendNotification('WARNING','Function cleanAndMove() encountered problem.','Most likely the file -mp4- is currently in use (deletion fail). Program should be functioning normally. // Sent by: cleanAndMove() // Error msg: '+error.message);
                         console.log("cleanAndMove():emptyDirSync - mp4 in use (deletion fail)");
                     }
                 }, 100);
@@ -664,6 +666,7 @@ async function appLoop() {
 
                     if(download === "Download: Function executed."){ //will not update timestamp on fail and on next loop app will try to download again
                         localTimestampUpdate(select_q);
+                        sendNotification('INFO','CONFIGURATION LOADED -> TIMESTAMP UPDATED','Remote configuration file  (remote_config.json) can be incomplete or corrupted. Please delete it for default configuration or enter custom data after default file creation. // Sent by: appLoop() // Error msg: ');
                     }
 
                     // Optional: Reload browser window if needed
