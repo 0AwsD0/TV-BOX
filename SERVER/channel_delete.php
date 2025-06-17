@@ -15,7 +15,7 @@ try{
         }
 }catch(Exception $err){
     $pdo->rollBack();
-    logEvent("error", "[CHANNEL DELETE] ERROR - TRANSACTION ROLLBACK - Deletion ERROR: ".$err." | ID: ".$_POST["id"]." created BY: ".$_SESSION["email"]);
+    logEvent("error", "[CHANNEL DELETE] ERROR - SQL TRANSACTION ROLLBACK - Deletion ERROR: ".$err." | ID: ".$_POST["id"]." created BY: ".$_SESSION["email"]);
 }
 
 header("Location: channels.php");
