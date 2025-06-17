@@ -51,6 +51,7 @@ require("./login_check.php");
             <div class="col-xl-4 text-center">
             <form action="display.php" method="post" style="display: inline-block;"><input type="hidden" name="channel" value="'.htmlspecialchars($v["name"]).'"><button type="submit" style="border: 0; color: white; background-color: rgba(0,0,0,0);"><i class="fa-solid fa-desktop"></i><b> DISPLAY</b></button></form>
             <form action="channel_rename.php" method="post" style="display: inline-block;"><input type="hidden" name="id" value="'.htmlspecialchars($v["id"]).'"><button type="submit" style="border: 0; color: white; background-color: rgba(0,0,0,0);"><i class="fa-solid fa-pen-to-square"></i><b> RENAME</b></button></form>
+            <form action="channel_copy.php" method="post" style="display: inline-block;"><input type="hidden" name="id" value="'.htmlspecialchars($v["id"]).'"><input type="hidden" name="name" value="'.htmlspecialchars($v["name"]).'"><button type="submit" style="border: 0; color: white; background-color: rgba(0,0,0,0);"><i class="fa-solid fa-copy"></i><b> COPY</b></button></form>
             <form action="channel_delete.php" method="post" style="display: inline-block;"><input type="hidden" name="id" value="'.htmlspecialchars($v["id"]).'"><button type="submit" style="border: 0; color: white; background-color: rgba(0,0,0,0);"><i class="fa-solid fa-trash"></i><b> DELETE</b></button></form>
             </div>
         </div>

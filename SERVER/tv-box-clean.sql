@@ -67,7 +67,7 @@ CREATE TABLE IF NOT EXISTS `notifications` (
   `type` varchar(30) NOT NULL,
   `title` varchar(255) NOT NULL,
   `content` text NOT NULL,
-  `email_sent` tinyint(4) DEFAULT 0,
+  `email_sent` tinyint(1) DEFAULT 0,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 

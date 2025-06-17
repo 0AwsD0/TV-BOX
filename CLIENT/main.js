@@ -666,7 +666,7 @@ async function appLoop() {
 
                     if(download === "Download: Function executed."){ //will not update timestamp on fail and on next loop app will try to download again
                         localTimestampUpdate(select_q);
-                        sendNotification('INFO','CONFIGURATION LOADED -> TIMESTAMP UPDATED','Remote configuration file  (remote_config.json) can be incomplete or corrupted. Please delete it for default configuration or enter custom data after default file creation. // Sent by: appLoop() // Error msg: ');
+                        sendNotification('INFO','CONFIGURATION LOADED -> TIMESTAMP UPDATED','Configuration and files loaded. // Sent by: appLoop()');
                     }
 
                     // Optional: Reload browser window if needed

@@ -3,16 +3,35 @@
     require_once("./log.php");
     require("./pdo.php");
 
-    if(isset($_POST["id"]) && isset($_POST["name"])){
-        $sql = $pdo->prepare("UPDATE channels SET name = :name WHERE id = :id");
-        $result = $sql->execute([
+if(isset($_POST["id"]) && isset($_POST["name"])){
+    $pdo->beginTransaction();
+    try{
+        $sql = $pdo->prepare("UPDATE channels_config SET channel_name = :name WHERE channel_name = (SELECT name FROM channels WHERE id = :id );");
+        $sql->execute([
             ':name' => $_POST['name'],
             ':id'   => $_POST['id']
         ]);
+
+        $sql2 = $pdo->prepare("UPDATE channels SET name = :name WHERE id = :id");
+        $sql2->execute([
+            ':name' => $_POST['name'],
+            ':id'   => $_POST['id']
+        ]);
+
+        $pdo->commit();
         logEvent("info", "[CHANNEL RENAME] ".$_POST["id"]." renamed to ".$_POST["name"]." BY: ".$_SESSION["email"]);
         header("Location: channels.php");
         exit();
+    }catch(Exception $err){
+        $pdo->rollBack();
+        logEvent("error", "[CHANNEL RENAME] ERROR - SQL TRANSACTION ROLLBACK - Error: ".$err." | ID: ".$_POST["id"]." NAME: ".$_POST["name"]." BY: ".$_SESSION["email"]);
+        header("Location: channels.php");
+        exit();
     }
+}
+
+
+
 ?>
 
 <!DOCTYPE html>
