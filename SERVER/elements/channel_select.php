@@ -13,6 +13,9 @@
                 ?>
             </select>
         <button class="file-button" type="submit" style="padding: 10px; font-size: 25px;">Select channel</button>
-        </form>
+    </form>
     </div>
 </div>
+    <div class="col text-center">
+      <a href="./channel_multiadd.php" style="display: inline-block;"><button type="submit" class="display-btn" style="opacity: 0.75; border-radius: 0px 0px 20px 20px;"><input type="hidden" name="channel" value="<?php echo($_SESSION["channel"]); ?>">&nbsp;Add media to multiple channels &nbsp;</button></a>
+    </div>
