@@ -32,9 +32,9 @@ require("./login_check.php");
 <!-- Edit button displays page that allows adding removing devices from channel pool -->
     <div class="row channel">
         <div class="col-xl-3 text-center"><b>CHANNEL NAME</b></div>
-        <div class="col-xl-3 text-center"><b>CONFIG DATE</b></div>
+        <div class="col-xl-2 text-center"><b>CONFIG DATE</b></div>
         <div class="col-xl-2 text-center"><b>DB ID</b></div>
-        <div class="col-xl-4 text-center"><b>OPTIONS</b></div>
+        <div class="col-xl-5 text-center"><b>OPTIONS</b></div>
     </div>
     <?php
 
@@ -45,10 +45,10 @@ require("./login_check.php");
     foreach($result->fetchAll(PDO::FETCH_ASSOC) as $k=>$v) {
         echo('
         <div class="row channel">
-            <div class="col-xl-3"><b>NAME: </b>'.htmlspecialchars($v["name"]).'</div>
-            <div class="col-xl-3"><b>DATE: </b>'.htmlspecialchars($v["configuration_date"]).'</div>
-            <div class="col-xl-2 text-center"><b>ID: </b>'.htmlspecialchars($v["id"]).'</div>
-            <div class="col-xl-4 text-center">
+            <div class="col-xl-3 text-center"><b></b>'.htmlspecialchars($v["name"]).'</div>
+            <div class="col-xl-2 text-center"><b></b>'.htmlspecialchars($v["configuration_date"]).'</div>
+            <div class="col-xl-2 text-center"><b></b>'.htmlspecialchars($v["id"]).'</div>
+            <div class="col-xl-5 text-center">
             <form action="display.php" method="post" style="display: inline-block;"><input type="hidden" name="channel" value="'.htmlspecialchars($v["name"]).'"><button type="submit" style="border: 0; color: white; background-color: rgba(0,0,0,0);"><i class="fa-solid fa-desktop"></i><b> DISPLAY</b></button></form>
             <form action="channel_rename.php" method="post" style="display: inline-block;"><input type="hidden" name="id" value="'.htmlspecialchars($v["id"]).'"><button type="submit" style="border: 0; color: white; background-color: rgba(0,0,0,0);"><i class="fa-solid fa-pen-to-square"></i><b> RENAME</b></button></form>
             <form action="channel_copy.php" method="post" style="display: inline-block;"><input type="hidden" name="id" value="'.htmlspecialchars($v["id"]).'"><input type="hidden" name="name" value="'.htmlspecialchars($v["name"]).'"><button type="submit" style="border: 0; color: white; background-color: rgba(0,0,0,0);"><i class="fa-solid fa-copy"></i><b> COPY</b></button></form>
