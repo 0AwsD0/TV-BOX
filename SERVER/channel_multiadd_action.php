@@ -78,11 +78,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }catch(Exception $err){
             $pdo->rollBack();
             header("Location: ./channel_multiadd.php?status=ERROR");
-            logEvent("error", "[MULTIADD] Multiadd FAILED! Error: ".$err." BY: ".$SESSION['email']);
+            logEvent("error", "[MULTIADD] Multiadd FAILED! Error: ".$err." BY: ".$_SESSION['email']);
             exit();
         }
             $pdo->commit();
-            logEvent("info", "[MULTIADD] Multiadd SUCCESS! BY: ".$SESSION['email']);
+            logEvent("info", "[MULTIADD] Multiadd SUCCESS! BY: ".$_SESSION['email']);
 
 
 
@@ -96,7 +96,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
         // Optional: Handle missing data
         header("Location: ./channel_multiadd.php?status=ERROR");
-        logEvent("error", "[MULTIADD] Multiadd FAILED! Missing POST data. BY: ".$SESSION['email']);
+        logEvent("error", "[MULTIADD] Multiadd FAILED! Missing POST data. BY: ".$_SESSION['email']);
         echo "No file or channels selected.";
         exit();
     }
