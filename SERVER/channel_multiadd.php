@@ -14,7 +14,7 @@ $preselectedChannels = $_GET['channel'] ?? []; // will be an array if passed lik
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TV-BOX DISPLAY</title>
+    <title>TV-BOX MULTIADD</title>
     <link rel="icon" type="image/png" href="favicon.png">
     <meta name="description" content="TVBOX - a management system for your TV resources.">
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
@@ -57,8 +57,17 @@ $preselectedChannels = $_GET['channel'] ?? []; // will be an array if passed lik
                         </div>');
                 }
             ?>
+               </form>
         </div>
-    </form>
+
+<form id="saveForm" method="POST" action="./channel_multisave.php" onsubmit="return prepareSaveForm();">
+  <div class="row">
+        <div id="saveFormChannels"></div>
+            <div class="col text-center">
+            <div style="display: inline-block;"><button type="submit" class="display-btn" style="opacity: 0.75; border-radius: 0px 0px 20px 20px;">&nbsp;SAVE Selected &nbsp;</button></div>
+            </div>
+  </div>
+</form>
 
     <!-- DISPLAY MEDIA FILES -->
     <div class="row mt-4">
@@ -95,10 +104,35 @@ $preselectedChannels = $_GET['channel'] ?? []; // will be an array if passed lik
 
 <!-- JAVASCRIPT TO COPY SELECTED CHANNELS -->
 <script>
+function getSelectedChannels() {
+    return document.querySelectorAll('#channelForm input[type="checkbox"]:checked');
+}
+
 function attachSelectedChannels(form) {
-    const selected = document.querySelectorAll('#channelForm input[type="checkbox"]:checked');
+    const selected = getSelectedChannels();
     const container = form.querySelector('.channels-container');
-    container.innerHTML = ''; // clear old
+    container.innerHTML = '';
+
+    if (selected.length === 0) {
+        alert("Please select at least one channel.");
+        return false;
+    }
+
+    selected.forEach((checkbox) => {
+        const input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = 'channel[]';
+        input.value = checkbox.value;
+        container.appendChild(input);
+    });
+
+    return true;
+}
+
+function prepareSaveForm() {
+    const selected = getSelectedChannels();
+    const container = document.getElementById('saveFormChannels');
+    container.innerHTML = '';
 
     if (selected.length === 0) {
         alert("Please select at least one channel.");
@@ -116,6 +150,5 @@ function attachSelectedChannels(form) {
     return true;
 }
 </script>
-
 </body>
 </html>
