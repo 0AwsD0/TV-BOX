@@ -374,9 +374,27 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#can-you-use-same-name-for-more-than-one-device" class="md-nav__link">
+    <span class="md-ellipsis">
+      Can you use same name for more than one device?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#can-you-change-interval-of-device-ping-timer" class="md-nav__link">
     <span class="md-ellipsis">
       Can you change interval of device 'ping' timer?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-to-add-files-to-multiple-channels-at-once" class="md-nav__link">
+    <span class="md-ellipsis">
+      How to add files to multiple channels at once?
     </span>
   </a>
   
@@ -468,9 +486,27 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#can-you-use-same-name-for-more-than-one-device" class="md-nav__link">
+    <span class="md-ellipsis">
+      Can you use same name for more than one device?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#can-you-change-interval-of-device-ping-timer" class="md-nav__link">
     <span class="md-ellipsis">
       Can you change interval of device 'ping' timer?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-to-add-files-to-multiple-channels-at-once" class="md-nav__link">
+    <span class="md-ellipsis">
+      How to add files to multiple channels at once?
     </span>
   </a>
   
@@ -521,8 +557,12 @@
 <p>Yes.</p>
 <h4 id="can-you-assign-device-to-more-than-one-channel">Can you assign device to more than one channel?</h4>
 <p>No.</p>
+<h4 id="can-you-use-same-name-for-more-than-one-device">Can you use same name for more than one device?</h4>
+<p>Yes, but it's not recommended. You won't know if one of the devices went offline, since other opens will still ping to the DB and the www panel will show only one device w name that's used -&gt; one row that. i s updated by many devices.</p>
 <h4 id="can-you-change-interval-of-device-ping-timer">Can you change interval of device 'ping' timer?</h4>
-<p>Yes, the configuration let's you change appLoop timer and DB reconnection timer. If you increase Loop Time - remember to edit web panel too. It displays different status color depending on device last dbPing() -&gt; timestamp in database. I recommend to make status "yellow" after 2 pings didn't come through. If you ping database every 3 minutes - maybe set status "RED" after some bigger amount of time than 4, 6 pings. The app won't ping database while downloading files, so when network is slow or there are many files to download devices may show up as yellow or even red on the ww panel.</p>
+<p>Yes, the configuration let's you change appLoop timer and DB reconnection timer. If you increase Loop Time - remember to edit web panel too. It displays different status color depending on device last dbPing() -&gt; timestamp in database. I recommend to make status "yellow" after 2 pings didn't come through. If you ping database every 3 minutes - maybe set status "RED" after some bigger amount of time than 4, 6 pings. The app won't ping database while downloading files, so when network is slow or there are many files to download devices may show up as yellow or even red on the www panel.</p>
+<h4 id="how-to-add-files-to-multiple-channels-at-once">How to add files to multiple channels at once?</h4>
+<p>You can do that by going to "Display" tab and clicking on "Add media to multiple channels". Select channels that are meant to receive media and click "Add" button on the media you want to add into selected channels. You can also save configuration for selected channels by clicking "SAVE Selected".</p>
 <h4 id="where-can-i-deploy-the-app">Where can I deploy the app?</h4>
 <p>In case off backend (management panel) - most basics hostings that have option to create at least one database are enough. Form the clients - since it's Electron.js app, it can be deployed ANYWHERE. Just compile it to target operating system or not - you can install node js and just npm run it!</p>
 <h4 id="where-can-i-get-in-contact-with-the-developer">Where can I get in contact with the developer?</h4>

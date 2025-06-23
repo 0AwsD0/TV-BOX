@@ -17,6 +17,10 @@ Yes, but it's not recommended. You won't know if one of the devices went offline
 
 Yes, the configuration let's you change appLoop timer and DB reconnection timer. If you increase Loop Time - remember to edit web panel too. It displays different status color depending on device last dbPing() -> timestamp in database. I recommend to make status "yellow" after 2 pings didn't come through. If you ping database every 3 minutes - maybe set status "RED" after some bigger amount of time than 4, 6 pings. The app won't ping database while downloading files, so when network is slow or there are many files to download devices may show up as yellow or even red on the www panel.
 
+#### How to add files to multiple channels at once?
+
+You can do that by going to "Display" tab and clicking on "Add media to multiple channels". Select channels that are meant to receive media and click "Add" button on the media you want to add into selected channels. You can also save configuration for selected channels by clicking "SAVE Selected".
+
 #### Where can I deploy the app?
 
 In case off backend (management panel) - most basics hostings that have option to create at least one database are enough. Form the clients - since it's Electron.js app, it can be deployed ANYWHERE. Just compile it to target operating system or not - you can install node js and just npm run it!
